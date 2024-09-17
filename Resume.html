@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <script src="Validation.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color:rgb(20, 20, 66) 
+            /* background-image: linear-gradient(to right, skyblue, whitesmoke, rgb(243, 212, 154));
+            background-size: cover;
+            background-attachment: fixed; */
+        }
+        #imagePreview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .nav-tabs{
+            border-color: transparent;
+        }
+        .form-section {
+            margin-top: 20px;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: whitesmoke; border-radius: 30px;
+            color: #0b0202; gap:26px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 200;
+            font-size: larger; padding: 12px 24px;
+        }
+        .button-container {
+  display: flex; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  justify-content: center; /* Align buttons horizontally in the center */
+  gap: 16px; /* Adjust spacing between buttons as needed */
+}
+        #add {
+            margin-top: 15px;
+            width: 90px;
+            margin-left: 36em;
+            font-size: 20px;
+        }
+
+        .card-body {
+            background-color: whitesmoke;
+        }
+
+        .form-label {
+            color:white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: xx-large;
+        }
+        .form-check{
+            color:white;
+        }
+        .card-header {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: x-large;
+            font-weight: bold;
+            color: black;
+        }
+        #title{
+             color:white; font-weight: bolder;
+        }
+        #reset {
+            margin-left: 20em;
+            margin-top: -7em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" id="title">Resume Builder</h1>
+
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs" id="tabs">
+            <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#basic" type="button">Basic
+                    Info</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link " data-bs-toggle="tab" data-bs-target="#personal" type="button">
+                    Personal Info
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#education" type="button">
+                    Education
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#skills" type="button">
+                    Skills
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Basic Information -->
+            <div class="tab-pane fade show active form-section" id="basic">
+                <div class="form-label" style="font-size: xx-large; font-weight: bold;">How long have you been working?
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="abc">
+                    <label for="form-check-label">No Experience</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="abc">
+                    <label for="form-check-label">Experienced</label>
+                </div>
+                <div class="form-label" style="font-size: xx-large; font-weight: bold;">Are you a student</div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="ab">
+                    <label for="form-check-label">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="ab">
+                    <label for="form-check-label">No</label>
+                </div>
+
+<!--                 
+                <div class="form-label" style="font-size: xx-large; font-weight: bold;">Upload existing resume</div>
+                <input type="file" accept=".pdf">
+ -->
+
+                <div class="mb-3">
+                    <label for="image" class="form-label" >Upload existing resume</label>
+                    <input type="file" class="form-control" id="image" name="image" accept=".pdf" style="width:350px"
+                        aria-required="true">
+                </div>
+
+
+                <div class="form-label" style="font-size: xx-large; font-weight: bold;">Desired job position</div>
+                <input type="text" class="form-control" style="width:350px; height: 40px; border-radius: 5px;" required>
+                <br>
+                <br>
+                <div class="text-center mt-3"> 
+                    <button type="button" class="btn btn-primary btn-gradient w-25" id="next">Next</button>
+                </div>
+            </div>
+            <!-- Personal Info Tab -->
+            <div class="tab-pane fade form-section" id="personal">
+                <form onsubmit="return check()">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Full Name" required>
+                                <label for="floatingInput">Full Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+                                <label for="floatingInput">Email</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="contact" placeholder="Contact" required>
+                                <label for="floatingInput">Phone Number</label>
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Upload Your Photo</label>
+                                <input type="file" class="form-control" id="image" name="image" accept="image/*"
+                                    onchange="previewImage(event)"  aria-required="true">
+                            </div>
+                            <div class="form-label">Marital Status</div>
+                                <div class="form-check">
+                                <input type="radio" name="m" id="" value="Married" class="form-check-input">
+                                <label for="form-check-label">Married
+                            </div>
+                                <div class="form-check">
+                                <input type="radio" name="m" id="" value="Married" class="form-check-input">
+                                <label for="form-check-label">Unmarried
+                            </div>
+                            <div class=" form-check" style="margin-left: -20px; margin-top: 10px;">
+                                <div class="form-label">Language Known</div>
+                                <div class="form-check">
+                                <input type="checkbox" name="india" class="form-check-input" id="a">Hindi
+                                </div>
+                                <div class="form-check">
+                                <input type="checkbox" name="india" class="form-check-input" id="a">English
+                                </div>
+                                <div class="form-check">
+                                <input type="checkbox" name="india" class="form-check-input" id="a">others
+                                </div>
+                            </div>
+                            <div class="text-center mt-4 col md-4">
+                                <button type="submit" class="btn btn-primary btn-gradient w-25">Submit Details</button>
+                                <button type="button" class="btn btn-primary btn-gradient w-25" id="next3">Next</button>
+                                 
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <img id="imagePreview" src="https://via.placeholder.com/150" alt="Image Preview">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Education Tab -->
+            <div class="tab-pane fade form-section" id="education">
+                <div class="card mb-4">
+                    <div class="card-header">Educational Information</div>
+                    <div class="card-body">
+                        <table class="table" id="educationTable">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Degree</th>
+                                    <th>Institution</th>
+                                    <th>Year of Passing</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" class="form-control" name="degree1" placeholder="Degree">
+                                    </td>
+                                    <td><input type="text" class="form-control" name="institution1"
+                                            placeholder="Institution"></td>
+                                    <td><input type="text" class="form-control" name="year1"
+                                            placeholder="Year of Passing"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Add button to dynamically add more rows -->
+                        <button type="button" class="btn btn-primary btn-gradient w-25" id="addRow">Add More..</button>
+                        <button type="button" class="btn btn-primary btn-gradient w-25" id="next1">Next</button>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Skills Tab -->
+            <div class="tab-pane fade form-section" id="skills">
+                <div class="card mb-4">
+                    <div class="card-header">Objective</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea id="textarea" class="form-control" rows="4"
+                                    placeholder="Enter your objective"  aria-required="true"></textarea>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Skills</div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <select class="form-select" id="skills" name="skills">
+                                <option selected disabled>Select Your Skills</option>
+                                <option value="html">HTML</option>
+                                <option value="css">CSS</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="python">Python</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!-- Video Upload and Preview -->
+                <div class="card mb-4" id="ffd">
+                    <div class="card-header">Upload and Preview Video</div>
+                    <div class="card-body ">
+                        <input type="file" id="videoUpload" accept="video/*" class="form-control mb-3"
+                            onchange="previewVideo(event)">
+                        <video id="videoPreview" controls style="width: 100%; height: auto">
+                            <source src="" type="video/mp4">
+                        </video>
+                    </div></div>
+                <!-- Take video from user -->
+               
+                <!-- Audio File -->
+                <div class="card mb-4">
+                    <div class="card-header">Audio Preview</div>
+                    <div class="card-body">
+                        <audio controls>
+                            <source src="Killing Jija - Animal Movie _ -Downringtone.com.mp3" type="audio/mpeg">
+                        </audio>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-danger btn-gradient w-100" id="next4">Reset</button>
+                            </div>
+                            <div class="col-6">
+                                <button type="reset" class="btn btn-primary btn-gradient w-100" id="submit" onclick="location.href='result.html'"
+                                    >Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Submit Button -->
+
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript to preview image and dynamically add rows -->
+    <script>
+        // Image preview function
+        function previewImage(event) {
+            const image = document.getElementById('imagePreview');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+        // Function to preview video
+        function previewVideo(event) {
+            const video = document.getElementById('videoPreview');
+            video.src=URL.createObjectURL(event.target.files[0])}
+            
+        // Function to add a new row to the education table
+        document.getElementById('addRow').addEventListener('click', function () {
+            const table = document.getElementById('educationTable').getElementsByTagName('tbody')[0];
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="text" class="form-control" name="degree" placeholder='Degree'></td>
+                <td><input type="text" class="form-control" name="institution" placeholder='Institution'></td>
+                <td><input type="text" class="form-control" name="year" placeholder='Year of Passing'></td>
+            `;
+            table.appendChild(newRow);
+        });
+    </script>
+    <!-- Include Bootstrap's JavaScript library if not already included -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the 'Next' button and the 'Personal Info' tab
+        var nextButton = document.getElementById('next');
+        var personalTab = document.querySelector('button[data-bs-target="#personal"]');
+        
+        nextButton.addEventListener('click', function() {
+            // Manually trigger the 'Personal Info' tab
+            var tab = new bootstrap.Tab(personalTab);
+            tab.show();
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the 'Next' button and the 'Personal Info' tab
+        var nextButton1 = document.getElementById('next1');
+        var skillsTab=document.querySelector('button[data-bs-target="#skills"]')
+        
+        nextButton1.addEventListener('click', function() {
+            // Manually trigger the 'Personal Info' tab
+            var tab1=new bootstrap.Tab(skillsTab);
+            tab1.show();
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var nextButton2=document.getElementById('next3');
+        var educationTab=document.querySelector('button[data-bs-target="#education"]');
+
+        nextButton2.addEventListener('click', function() {
+            var tab2=new bootstrap.Tab(educationTab);
+            tab2.show();
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var nextButton3=document.getElementById('next4');
+        var basicTab=document.querySelector('button[data-bs-target="#basic"]');
+
+        nextButton3.addEventListener('click', function() {
+            var tab3=new bootstrap.Tab(basicTab);
+            tab3.show();
+        });
+    });
+</script>
+
+</body>
+
+</html>
